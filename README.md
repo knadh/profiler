@@ -2,7 +2,7 @@
 
 # profiler
 
-profiler is a tiny Go wrapper around runtime/pprof for easily profile Go programs. It allows to run one or more profiles (cpu, mem etc.) simultaneously while avoiding boilerplate. The results are dumped to files. This is a rewrite of [pkg/profile](https://github.com/pkg/profile/) with the key difference of supporting multiple concurrent profiles.
+profiler is a tiny wrapper around runtime/pprof for easily profiling Go programs. It allows running one or more profiles (cpu, mem etc.) simultaneously while avoiding boilerplate. The results are dumped to files. This is a rewrite of [pkg/profile](https://github.com/pkg/profile/) with the key difference of supporting multiple concurrent profiles.
 
 ## Install
 ```shell
