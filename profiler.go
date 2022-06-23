@@ -140,7 +140,7 @@ func (prof *Profiler) Start() {
 		pr.Start(f)
 	}
 
-	atomic.StoreUint32(&running, 0)
+	atomic.StoreUint32(&running, 1)
 }
 
 // Stop runs all the profile stop functions.
