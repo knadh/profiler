@@ -15,7 +15,7 @@ import "github.com/knadh/profiler"
 
 func main() {
 	// Pass one or more modes: Block, Cpu, Goroutine, Mem, Mutex, ThreadCreate, Trace ...
-	p := profiler.New(profiler.Conf{}, profiler.Cpu, profiler.Mem ...)
+	p := profiler.New(profiler.Conf{}, profiler.Cpu, profiler.Mem)
 	p.Start()
 
 	// Stuff ...
