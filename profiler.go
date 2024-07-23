@@ -63,8 +63,8 @@ type Profiler struct {
 	log               *log.Logger
 }
 
-// Flag to block concurrent Start() of the profiler.
-var running uint32
+// Flag to block concurrent and multiple Start() and Stop() of the profiler.
+var running, stopped uint32
 
 // New returns a new Profiler. One or more modes can be provided.
 // eg: `prof := New(profiler.Cpu, profiler.Mem ...)`
@@ -145,6 +145,11 @@ func (prof *Profiler) Start() {
 
 // Stop runs all the profile stop functions.
 func (pr *Profiler) Stop() {
+	if !atomic.CompareAndSwapUint32(&stopped, 0, 1) {
+		log.Printf("profiler has already been stopped")
+		return
+	}
+
 	for _, p := range pr.profiles {
 		pr.log.Printf("finishing %s", path.Join(pr.c.DirPath, p.File))
 		p.Stop(p.f)
